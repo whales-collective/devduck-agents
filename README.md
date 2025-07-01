@@ -47,12 +47,14 @@ The system consists of three main agents:
 
 ### Configuration
 
-1. You need an Cerebras API Key: https://cloud.cerebras.ai/
+1. **You need a Cerebras API Key**: https://cloud.cerebras.ai/
 2. Create a `/agents/.env` file with the following content:
 
 ```env
 CEREBRAS_API_KEY=<your_cerebras_api_key>
 ```
+
+### ✋ All the prompts are define in the 🐙 compose file
 
 ### Start the services
 
