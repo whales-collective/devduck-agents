@@ -12,7 +12,16 @@ This ADK project is composed by 3 agents:
 
 ## Architecture
 
-The system consists of three main agents:
+The system consists of three main agents orchestrated by Docker Compose, which plays a **primordial role** in launching and coordinating all agent services:
+
+### 🐙 Docker Compose Orchestration
+- **Central Role**: Docker Compose serves as the foundation for the entire multi-agent system
+- **Service Orchestration**: Manages the lifecycle of all three agents (DevDuck, Bob, and Cerebras)
+- **Configuration Management**: Defines agent prompts, model configurations, and service dependencies directly in the compose file
+- **Network Coordination**: Establishes secure inter-agent communication channels
+- **Environment Management**: Handles API keys, model parameters, and runtime configurations
+
+### Agent Components:
 
 ### 🦆 DevDuck (Main Agent)
 - **Role**: Main development assistant and project coordinator
