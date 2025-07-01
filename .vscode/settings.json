@@ -2,7 +2,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Idea intellij light theme",
     "editor.fontSize": 14,
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 16,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.detectIndentation": true,
@@ -16,7 +16,7 @@
         "diffEditor.ignoreTrimWhitespace": false,
         "editor.fontWeight": "normal",
         "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
-        "editor.fontSize": 14,
+        "editor.fontSize": 16,
         "editor.wordWrap": "on",
         "editor.quickSuggestions": {
             "comments": "off",
@@ -24,7 +24,7 @@
             "other": "off"
         }
     },
-    "markdown.preview.fontSize": 14,
+    "markdown.preview.fontSize": 16,
     "workbench.editorAssociations": {
         //"*.md": "vscode.markdown.preview.editor"
     },
@@ -32,7 +32,7 @@
         "editor.fontSize": 14,
     },
     "[dockercompose]": {
-        "editor.fontSize": 14,
+        "editor.fontSize": 16,
     },
     "[json]": {
         "editor.fontSize": 16,
@@ -43,6 +43,9 @@
     },
     "[go]": {
         "editor.fontSize": 14,
+    },
+    "[python]": {
+        "editor.fontSize": 16,
     },
     "todohighlight.keywords": [
         {

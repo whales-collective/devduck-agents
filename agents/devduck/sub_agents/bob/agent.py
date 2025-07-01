@@ -14,16 +14,16 @@ from google.adk.models import LlmResponse, LlmRequest
 LiteLlm.set_verbose = True
 
 
-cerebras_agent = Agent(
+bob_agent = Agent(
     model=LiteLlm(
-        model=f"openai/{os.environ.get('CEREBRAS_CHAT_MODEL')}",
-        api_base=os.environ.get('CEREBRAS_BASE_URL'),  
-        api_key=os.environ.get('CEREBRAS_API_KEY'), 
+        model=f"openai/{os.environ.get('BOB_CHAT_MODEL')}",
+        api_base=os.environ.get('BOB_BASE_URL'),  
+        api_key="tada",
         temperature=0.0
     ),
-    name=os.environ.get('CEREBRAS_AGENT_NAME'),
-    description=os.environ.get('CEREBRAS_AGENT_DESCRIPTION'),
-    instruction=os.environ.get('CEREBRAS_AGENT_INSTRUCTION'),
+    name=os.environ.get('BOB_AGENT_NAME'),
+    description=os.environ.get('BOB_AGENT_DESCRIPTION'),
+    instruction=os.environ.get('BOB_AGENT_INSTRUCTION'),
 )
 
 

@@ -57,20 +57,3 @@ services:
         ### IMPORTANT:
         1. **No Parent Agent Routing:** Do not route back to the parent agent unless the user explicitly requests it.
         2. If the user specifically wants to speak with bob, route to the bob_agent. 
-
-
-    depends_on:
-      - download-qwen2-model
-      - download-qwen3-model
-      
-  download-qwen2-model:
-    provider:
-      type: model
-      options:
-        model: ai/qwen2.5:latest
-
-  download-qwen3-model:
-    provider:
-      type: model
-      options:
-        model: unsloth/qwen3-gguf:4B-UD-Q4_K_XL
