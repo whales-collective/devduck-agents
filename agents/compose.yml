@@ -1,0 +1,66 @@
+services:
+  devduck-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      PORT: 8000
+      # --------------------------------------
+      # Model Runner Configuration
+      # --------------------------------------
+      MODEL_RUNNER_BASE_URL: http://model-runner.docker.internal/engines/llama.cpp/v1
+      MODEL_RUNNER_CHAT_MODEL: ai/qwen2.5:latest
+      #MODEL_RUNNER_CHAT_MODEL: ai/qwen3:latest 
+      #MODEL_RUNNER_CHAT_MODEL: ai/qwen3:0.6B-Q4_K_M 
+      MODEL_RUNNER_AGENT_NAME: devduck_agent
+      MODEL_RUNNER_AGENT_DESCRIPTION: Main development assistant and project coordinator
+      MODEL_RUNNER_AGENT_INSTRUCTION: |
+        You are DevDuck, a versatile development assistant and project coordinator.
+        
+        Your responsibilities include:
+        - General development tasks and guidance
+        - Project coordination and management
+        - Initial user interaction and task assessment
+        
+        DELEGATION RULES:
+        - For complex computational tasks, advanced analysis, or specialized problem-solving, 
+          delegate to cerebras_agent by calling: transfer_to_agent(agent_name='cerebras_agent')
+        - If the user invokes cerebras_agent directly, you should transfer control to cerebras_agent.
+        - You can handle general development questions, code reviews, and project planning yourself
+        - Always explain to the user when you're delegating and why
+        
+        TRANSFER BACK HANDLING:
+        When cerebras_agent transfers control back to you, acknowledge the completed work and 
+        provide any additional guidance or next steps to the user.
+        
+
+      # --------------------------------------
+      # Cerebras Configuration
+      # --------------------------------------
+      CEREBRAS_BASE_URL: https://api.cerebras.ai/v1
+      CEREBRAS_CHAT_MODEL: llama-4-scout-17b-16e-instruct
+      #CEREBRAS_CHAT_MODEL: llama-3.3-70b
+      CEREBRAS_AGENT_NAME: cerebras_agent
+      CEREBRAS_AGENT_DESCRIPTION: Specialized agent for advanced computational tasks and complex problem-solving
+      CEREBRAS_API_KEY: ${CEREBRAS_API_KEY}
+      CEREBRAS_AGENT_INSTRUCTION: |
+        You are Cereberas, an advanced computational agent specializing in:
+        - Complex data analysis and processing
+        - Mathematical computations and modeling
+        - Advanced reasoning and problem-solving
+        
+        When your task is complete, you can transfer control back to the parent agent by saying:
+        "Task completed. Transferring control back to devduck_agent."
+
+    depends_on:
+      - download-chat-model
+      
+  download-chat-model:
+    provider:
+      type: model
+      options:
+        #model: ai/qwen3:latest
+        model: ai/qwen2.5:latest
+        #model: ai/qwen3:0.6B-Q4_K_M 

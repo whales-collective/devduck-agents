@@ -1,0 +1,7 @@
+/tmp
+__pycache__
+#.vscode/settings.json
+backup/
+data/
+api.key
+/agents/.env
